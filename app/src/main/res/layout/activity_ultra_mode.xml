@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.android.tictactoe.UltraMode">
+
+    <ImageView
+        style="@style/ImageViewStyle"
+        android:contentDescription="@string/app_name"
+        android:src="@drawable/tictac" />
+
+    <!--Table Layout with 3 rows and each row with 3 buttons-->
+    <TableLayout
+        android:id="@+id/glGameBoard"
+        style="@style/TableLayoutUltra"
+        android:layout_below="@+id/tvInfo">
+
+        <!--Row 1-->
+        <TableRow>
+
+            <Button
+                android:id="@+id/b00"
+                style="@style/ButtonStyleUltra" />
+
+            <Button
+                android:id="@+id/b01"
+                style="@style/ButtonStyleUltra" />
+
+            <Button
+                android:id="@+id/b02"
+                style="@style/ButtonStyleUltra" />
+
+            <Button
+                android:id="@+id/b03"
+                style="@style/ButtonStyleUltra" />
+
+            <Button
+                android:id="@+id/b04"
+                style="@style/ButtonStyleUltra" />
+
+        </TableRow>
+
+        <!--Row 2-->
+        <TableRow>
+
+            <Button
+                android:id="@+id/b10"
+                style="@style/ButtonStyleUltra" />
+
+            <Button
+                android:id="@+id/b11"
+                style="@style/ButtonStyleUltra" />
+
+            <Button
+                android:id="@+id/b12"
+                style="@style/ButtonStyleUltra" />
+            <Button
+                android:id="@+id/b13"
+                style="@style/ButtonStyleUltra" />
+
+            <Button
+                android:id="@+id/b14"
+                style="@style/ButtonStyleUltra" />
+
+        </TableRow>
+
+        <!--Row 3-->
+        <TableRow>
+
+            <Button
+                android:id="@+id/b20"
+                style="@style/ButtonStyleUltra" />
+
+            <Button
+                android:id="@+id/b21"
+                style="@style/ButtonStyleUltra" />
+
+            <Button
+                android:id="@+id/b22"
+                style="@style/ButtonStyleUltra" />
+            <Button
+                android:id="@+id/b23"
+                style="@style/ButtonStyleUltra" />
+
+            <Button
+                android:id="@+id/b24"
+                style="@style/ButtonStyleUltra" />
+
+        </TableRow>
+
+    </TableLayout>
+
+    <!--TextView to show user turns and winner-->
+    <TextView
+        android:id="@+id/tvInfo"
+        style="@style/TextViewStyle" />
+
+    <!--Button to reset game board-->
+    <Button
+        android:id="@+id/bReset"
+        style="@style/ResetButtonStyle"
+        android:layout_below="@+id/glGameBoard"
+        android:text="@string/Reset" />
+
+</RelativeLayout>
+

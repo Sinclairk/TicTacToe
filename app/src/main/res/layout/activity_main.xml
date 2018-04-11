@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.android.tictactoe.MainActivity">
+
+    <ImageView
+        style="@style/ImageViewStyle"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:contentDescription="@string/app_name"
+        android:src="@drawable/homepage" />
+
+    <Button
+        android:id="@+id/ultra"
+        android:layout_width="250dp"
+        android:layout_height="40dp"
+        android:layout_centerInParent="true"
+        android:background="@drawable/ibutton"
+        android:text="@string/Ultra"
+        android:textStyle="bold"
+
+        />
+
+    <Button
+        android:id="@+id/simple"
+        android:layout_width="250dp"
+        android:layout_height="40dp"
+        android:layout_below="@+id/ultra"
+        android:layout_centerInParent="true"
+        android:layout_margin="16dp"
+        android:background="@drawable/ibutton"
+        android:text="@string/simple"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/single"
+        android:layout_width="250dp"
+        android:layout_height="40dp"
+        android:layout_below="@+id/simple"
+        android:layout_centerInParent="true"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/ibutton"
+        android:text="@string/single"
+        android:textStyle="bold"
+
+        />
+
+
+    <Button
+        android:id="@+id/exit"
+        android:layout_width="250dp"
+        android:layout_height="40dp"
+        android:layout_below="@+id/single"
+        android:layout_centerInParent="true"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/ibutton"
+        android:text="@string/exit"
+        android:textStyle="bold"
+
+
+        />
+
+</RelativeLayout>
+
+

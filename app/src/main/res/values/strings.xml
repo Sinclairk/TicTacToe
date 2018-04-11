@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Tic Tac Toe</string>
+    <string name="Reset">RESET</string>
+    <string name="Ultra">Ultra Mode</string>
+    <string name="simple">Simple Mode</string>
+    <string name="exit">Exit</string>
+    <string name="single">Single player</string>
+    <string name="about">about</string>
+</resources>
