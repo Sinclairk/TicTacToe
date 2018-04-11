@@ -10,7 +10,7 @@
         android:contentDescription="@string/app_name"
         android:src="@drawable/tictac" />
 
-    <!--Table Layout with 3 rows and each row with 3 buttons-->
+    <!--Table Layout with 3 rows and each row with 3 button-->
     <TableLayout
         android:id="@+id/glGameBoard"
         style="@style/Table"
