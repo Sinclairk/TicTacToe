@@ -15,29 +15,29 @@
     <TableLayout
         android:id="@+id/glGameBoard"
         style="@style/TableLayoutUltra"
-        android:layout_below="@+id/tvInfo">
+        android:layout_below="@+id/info">
 
         <!--Row 1-->
         <TableRow>
 
             <Button
-                android:id="@+id/b00"
+                android:id="@+id/button00"
                 style="@style/ButtonStyleUltra" />
 
             <Button
-                android:id="@+id/b01"
+                android:id="@+id/button01"
                 style="@style/ButtonStyleUltra" />
 
             <Button
-                android:id="@+id/b02"
+                android:id="@+id/button02"
                 style="@style/ButtonStyleUltra" />
 
             <Button
-                android:id="@+id/b03"
+                android:id="@+id/button03"
                 style="@style/ButtonStyleUltra" />
 
             <Button
-                android:id="@+id/b04"
+                android:id="@+id/button04"
                 style="@style/ButtonStyleUltra" />
 
         </TableRow>
@@ -46,22 +46,22 @@
         <TableRow>
 
             <Button
-                android:id="@+id/b10"
+                android:id="@+id/button10"
                 style="@style/ButtonStyleUltra" />
 
             <Button
-                android:id="@+id/b11"
+                android:id="@+id/button11"
                 style="@style/ButtonStyleUltra" />
 
             <Button
-                android:id="@+id/b12"
+                android:id="@+id/button12"
                 style="@style/ButtonStyleUltra" />
             <Button
-                android:id="@+id/b13"
+                android:id="@+id/button13"
                 style="@style/ButtonStyleUltra" />
 
             <Button
-                android:id="@+id/b14"
+                android:id="@+id/button14"
                 style="@style/ButtonStyleUltra" />
 
         </TableRow>
@@ -70,22 +70,67 @@
         <TableRow>
 
             <Button
-                android:id="@+id/b20"
+                android:id="@+id/button20"
                 style="@style/ButtonStyleUltra" />
 
             <Button
-                android:id="@+id/b21"
+                android:id="@+id/button21"
                 style="@style/ButtonStyleUltra" />
 
             <Button
-                android:id="@+id/b22"
+                android:id="@+id/button22"
                 style="@style/ButtonStyleUltra" />
             <Button
-                android:id="@+id/b23"
+                android:id="@+id/button23"
                 style="@style/ButtonStyleUltra" />
 
             <Button
-                android:id="@+id/b24"
+                android:id="@+id/button24"
+                style="@style/ButtonStyleUltra" />
+        </TableRow>
+        <!--Row 3-->
+        <TableRow>
+
+            <Button
+                android:id="@+id/button30"
+                style="@style/ButtonStyleUltra" />
+
+            <Button
+                android:id="@+id/button31"
+                style="@style/ButtonStyleUltra" />
+
+            <Button
+                android:id="@+id/button32"
+                style="@style/ButtonStyleUltra" />
+            <Button
+                android:id="@+id/button33"
+                style="@style/ButtonStyleUltra" />
+
+            <Button
+                android:id="@+id/button34"
+                style="@style/ButtonStyleUltra" />
+
+
+        </TableRow>
+        <TableRow>
+
+            <Button
+                android:id="@+id/button40"
+                style="@style/ButtonStyleUltra" />
+
+            <Button
+                android:id="@+id/button41"
+                style="@style/ButtonStyleUltra" />
+
+            <Button
+                android:id="@+id/button42"
+                style="@style/ButtonStyleUltra" />
+            <Button
+                android:id="@+id/button43"
+                style="@style/ButtonStyleUltra" />
+
+            <Button
+                android:id="@+id/button44"
                 style="@style/ButtonStyleUltra" />
 
         </TableRow>
@@ -94,12 +139,12 @@
 
     <!--TextView to show user turns and winner-->
     <TextView
-        android:id="@+id/tvInfo"
+        android:id="@+id/info"
         style="@style/TextViewStyle" />
 
     <!--Button to reset game board-->
     <Button
-        android:id="@+id/bReset"
+        android:id="@+id/reset"
         style="@style/ResetButtonStyle"
         android:layout_below="@+id/glGameBoard"
         android:text="@string/Reset" />

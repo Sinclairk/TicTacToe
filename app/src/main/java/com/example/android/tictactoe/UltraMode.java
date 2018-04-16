@@ -2,360 +2,662 @@ package com.example.android.tictactoe;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-/*
- Created by rajat4914 on 04/01/17.
- */
 
 public class UltraMode extends AppCompatActivity implements View.OnClickListener {
 
-    /*
-    DESCRIPTION OF VARIABLES
 
-    TAG ---------> Used for log debugging
-    PLAYER_X ----> Variable to identify player turn
-    TURN_COUNT --> Variable to keep count of number of turns
-    b00 - b22 ---> Button for each 3x3 box
-    tvInfo ------> Information regarding game status
-    boardStatus -> 2-d array to identify board status
-        -1 means, No one has played on that box yet
-        0 means, Player 0 has played on that box
-        1 means, Player X has played on that box
-    */
-
-    /*
-    DESCRIPTION OF METHODS
-
-    onClick --------> Called whenever any box or reset button is clicked.
-        This method places either X or 0 according to player turn
-        and updates other information
-
-    checkWinner ----> This method checks the board status and identifies the winner
-        It checks for all the 3 rows, 3 columns and 2 diagonals
-
-    resetBoard -----> This method is called whenever reset button is pressed.
-        updates everything to initial values of game
-
-    enableAllBoxes -> This method can either enable or disable all boxes
-
-    setInfo --------> This method updates the string in TextView
-
-    result ---------> This method works whenever a player wins or game draws
-
-    initializeBoardStatus -> Method which set the value of integer array to -1
-
-    */
-
-    private final static String TAG = simplemode.class.getSimpleName();
     boolean PLAYER_X = true;
+    int Turn_count = 0;
+    /**
+     buttons that players click on to play
+     * Declaring the buttons for the 5*5 matrix and initializing them too
+     */
 
-    int TURN_COUNT = 0;
 
-    Button b00;
-    Button b01;
-    Button b02;
+    Button button00;
+    Button button01;
+    Button button02;
+    Button button03;
+    Button button04;
 
-    Button b10;
-    Button b11;
-    Button b12;
 
-    Button b20;
-    Button b21;
-    Button b22;
+    Button button10;
+    Button button11;
+    Button button12;
+    Button button13;
+    Button button14;
 
-    Button bReset;
 
-    TextView tvInfo;
+    Button button20;
+    Button button21;
+    Button button22;
+    Button button23;
+    Button button24;
 
-    int[][] boardStatus = new int[3][3];
+
+    Button button30;
+    Button button31;
+    Button button32;
+    Button button33;
+    Button button34;
+
+
+    Button button40;
+    Button button41;
+    Button button42;
+    Button button43;
+    Button button44;
+
+
+
+    Button resetBoard;
+
+
+
+    TextView statusInfo;
+
+
+
+    int[][] playStatus = new int[5][5];
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_ultra_mode);
 
-        b00 = findViewById(R.id.b00);
-        b01 = findViewById(R.id.b01);
-        b02 = findViewById(R.id.b02);
 
-        b10 = findViewById(R.id.b10);
-        b11 = findViewById(R.id.b11);
-        b12 = findViewById(R.id.b12);
 
-        b20 = findViewById(R.id.b20);
-        b21 = findViewById(R.id.b21);
-        b22 = findViewById(R.id.b22);
+        button00 = findViewById(R.id.button00);
+        button01 = findViewById(R.id.button01);
+        button02 = findViewById(R.id.button02);
+        button03 = findViewById(R.id.button03);
+        button04 = findViewById(R.id.button04);
 
-        bReset = findViewById(R.id.bReset);
-        tvInfo = findViewById(R.id.tvInfo);
 
-        bReset.setOnClickListener(this);
+        button10 = findViewById(R.id.button10);
+        button11 = findViewById(R.id.button11);
+        button12 = findViewById(R.id.button12);
+        button13 = findViewById(R.id.button13);
+        button14 = findViewById(R.id.button14);
 
-        b00.setOnClickListener(this);
-        b01.setOnClickListener(this);
-        b02.setOnClickListener(this);
 
-        b10.setOnClickListener(this);
-        b11.setOnClickListener(this);
-        b12.setOnClickListener(this);
+        button20 = findViewById(R.id.button20);
+        button21 = findViewById(R.id.button21);
+        button22 = findViewById(R.id.button22);
+        button23 = findViewById(R.id.button23);
+        button24 = findViewById(R.id.button24);
 
-        b20.setOnClickListener(this);
-        b21.setOnClickListener(this);
-        b22.setOnClickListener(this);
 
-        initializeBoardStatus();
+        button30 = findViewById(R.id.button30);
+        button31 = findViewById(R.id.button31);
+        button32 = findViewById(R.id.button32);
+        button33 = findViewById(R.id.button33);
+        button34 = findViewById(R.id.button34);
 
+
+        button40 = findViewById(R.id.button40);
+        button41 = findViewById(R.id.button41);
+        button42 = findViewById(R.id.button42);
+        button43 = findViewById(R.id.button43);
+        button44 = findViewById(R.id.button44);
+
+
+        resetBoard = findViewById(R.id.reset);
+
+
+        statusInfo = findViewById(R.id.info);
+
+
+        button00.setOnClickListener(this);
+        button01.setOnClickListener(this);
+        button02.setOnClickListener(this);
+        button03.setOnClickListener(this);
+        button04.setOnClickListener(this);
+
+
+        button10.setOnClickListener(this);
+        button11.setOnClickListener(this);
+        button12.setOnClickListener(this);
+        button13.setOnClickListener(this);
+        button14.setOnClickListener(this);
+
+        button20.setOnClickListener(this);
+        button21.setOnClickListener(this);
+        button22.setOnClickListener(this);
+        button23.setOnClickListener(this);
+        button24.setOnClickListener(this);
+
+
+        button30.setOnClickListener(this);
+        button31.setOnClickListener(this);
+        button32.setOnClickListener(this);
+        button33.setOnClickListener(this);
+        button34.setOnClickListener(this);
+
+
+        button40.setOnClickListener(this);
+        button41.setOnClickListener(this);
+        button42.setOnClickListener(this);
+        button43.setOnClickListener(this);
+        button44.setOnClickListener(this);
+
+        resetBoard.setOnClickListener(this);
+
+        startGame();
     }
 
+    /**
+     * @param view This Fuctions loops through the buttons checking which box has been clicked and by which player
+     *             it's the main method of the game.
+     */
     @Override
     public void onClick(View view) {
-        Log.d(TAG, "Inside onClick");
 
         boolean resetButtonPressed = false;
 
         switch (view.getId()) {
-            case R.id.b00:
+
+            case R.id.button00:
                 if (PLAYER_X) {
-                    b00.setText("X");
-                    boardStatus[0][0] = 1;
+                    button00.setText("X");
+                    playStatus[0][0] = 1;
                 } else {
-                    b00.setText("0");
-                    boardStatus[0][0] = 0;
+                    button00.setText("0");
+                    playStatus[0][0] = 0;
                 }
-                b00.setEnabled(false);
+                button00.setEnabled(false);
                 break;
 
-            case R.id.b01:
+            case R.id.button01:
                 if (PLAYER_X) {
-                    b01.setText("X");
-                    boardStatus[0][1] = 1;
+                    button01.setText("X");
+                    playStatus[0][1] = 1;
                 } else {
-                    b01.setText("0");
-                    boardStatus[0][1] = 0;
+                    button01.setText("0");
+                    playStatus[0][1] = 0;
                 }
-                b01.setEnabled(false);
+                button01.setEnabled(false);
                 break;
 
-            case R.id.b02:
+
+            case R.id.button02:
                 if (PLAYER_X) {
-                    b02.setText("X");
-                    boardStatus[0][2] = 1;
+                    button02.setText("X");
+                    playStatus[0][2] = 1;
                 } else {
-                    b02.setText("0");
-                    boardStatus[0][2] = 0;
+                    button02.setText("0");
+                    playStatus[0][2] = 0;
                 }
-                b02.setEnabled(false);
+                button02.setEnabled(false);
                 break;
 
-            case R.id.b10:
+
+            case R.id.button03:
                 if (PLAYER_X) {
-                    b10.setText("X");
-                    boardStatus[1][0] = 1;
+                    button03.setText("X");
+                    playStatus[0][3] = 1;
                 } else {
-                    b10.setText("0");
-                    boardStatus[1][0] = 0;
+                    button03.setText("0");
+                    playStatus[0][3] = 0;
                 }
-                b10.setEnabled(false);
+                button03.setEnabled(false);
                 break;
 
-            case R.id.b11:
+
+            case R.id.button04:
                 if (PLAYER_X) {
-                    b11.setText("X");
-                    boardStatus[1][1] = 1;
+                    button04.setText("X");
+                    playStatus[0][4] = 1;
                 } else {
-                    b11.setText("0");
-                    boardStatus[1][1] = 0;
+                    button04.setText("0");
+                    playStatus[0][4] = 0;
                 }
-                b11.setEnabled(false);
+                button04.setEnabled(false);
                 break;
 
-            case R.id.b12:
+
+            case R.id.button10:
                 if (PLAYER_X) {
-                    b12.setText("X");
-                    boardStatus[1][2] = 1;
+                    button10.setText("X");
+                    playStatus[1][0] = 1;
                 } else {
-                    b12.setText("0");
-                    boardStatus[1][2] = 0;
+                    button10.setText("0");
+                    playStatus[1][0] = 0;
                 }
-                b12.setEnabled(false);
+                button10.setEnabled(false);
                 break;
 
-            case R.id.b20:
+
+            case R.id.button11:
                 if (PLAYER_X) {
-                    b20.setText("X");
-                    boardStatus[2][0] = 1;
+                    button11.setText("X");
+                    playStatus[1][1] = 1;
                 } else {
-                    b20.setText("0");
-                    boardStatus[2][0] = 0;
+                    button00.setText("0");
+                    playStatus[1][1] = 0;
                 }
-                b20.setEnabled(false);
+                button11.setEnabled(false);
                 break;
 
-            case R.id.b21:
+
+            case R.id.button12:
                 if (PLAYER_X) {
-                    b21.setText("X");
-                    boardStatus[2][1] = 1;
+                    button12.setText("X");
+                    playStatus[1][2] = 1;
                 } else {
-                    b21.setText("0");
-                    boardStatus[2][1] = 0;
+                    button12.setText("0");
+                    playStatus[1][2] = 0;
                 }
-                b21.setEnabled(false);
+                button12.setEnabled(false);
                 break;
 
-            case R.id.b22:
+
+            case R.id.button13:
                 if (PLAYER_X) {
-                    b22.setText("X");
-                    boardStatus[2][2] = 1;
+                    button13.setText("X");
+                    playStatus[1][3] = 1;
                 } else {
-                    b22.setText("0");
-                    boardStatus[2][2] = 0;
+                    button13.setText("0");
+                    playStatus[1][3] = 0;
                 }
-                b22.setEnabled(false);
+                button13.setEnabled(false);
                 break;
 
-            case R.id.bReset:
+            case R.id.button14:
+                if (PLAYER_X) {
+                    button14.setText("X");
+                    playStatus[1][4] = 1;
+                } else {
+                    button00.setText("0");
+                    playStatus[1][4] = 0;
+                }
+                button14.setEnabled(false);
+                break;
+
+
+            case R.id.button20:
+                if (PLAYER_X) {
+                    button20.setText("X");
+                    playStatus[2][0] = 1;
+                } else {
+                    button20.setText("0");
+                    playStatus[2][0] = 0;
+                }
+                button20.setEnabled(false);
+                break;
+
+            case R.id.button21:
+                if (PLAYER_X) {
+                    button21.setText("X");
+                    playStatus[2][1] = 1;
+                } else {
+                    button21.setText("0");
+                    playStatus[2][1] = 0;
+                }
+                button21.setEnabled(false);
+                break;
+
+
+            case R.id.button22:
+                if (PLAYER_X) {
+                    button22.setText("X");
+                    playStatus[2][2] = 1;
+                } else {
+                    button00.setText("0");
+                    playStatus[2][2] = 0;
+                }
+                button22.setEnabled(false);
+                break;
+
+
+            case R.id.button23:
+                if (PLAYER_X) {
+                    button23.setText("X");
+                    playStatus[2][3] = 1;
+                } else {
+                    button23.setText("0");
+                    playStatus[2][3] = 0;
+                }
+                button23.setEnabled(false);
+                break;
+
+            case R.id.button24:
+                if (PLAYER_X) {
+                    button24.setText("X");
+                    playStatus[2][4] = 1;
+                } else {
+                    button24.setText("0");
+                    playStatus[2][4] = 0;
+                }
+                button24.setEnabled(false);
+                break;
+
+            case R.id.button30:
+                if (PLAYER_X) {
+                    button30.setText("X");
+                    playStatus[3][0] = 1;
+                } else {
+                    button30.setText("0");
+                    playStatus[3][0] = 0;
+                }
+                button30.setEnabled(false);
+                break;
+
+            case R.id.button31:
+                if (PLAYER_X) {
+                    button31.setText("X");
+                    playStatus[3][1] = 1;
+                } else {
+                    button31.setText("0");
+                    playStatus[3][1] = 0;
+                }
+                button31.setEnabled(false);
+                break;
+
+
+            case R.id.button32:
+                if (PLAYER_X) {
+                    button32.setText("X");
+                    playStatus[3][2] = 1;
+                } else {
+                    button32.setText("0");
+                    playStatus[3][2] = 0;
+                }
+                button32.setEnabled(false);
+                break;
+
+
+            case R.id.button33:
+                if (PLAYER_X) {
+                    button33.setText("X");
+                    playStatus[3][3] = 1;
+                } else {
+                    button33.setText("0");
+                    playStatus[3][3] = 3;
+                }
+                button33.setEnabled(false);
+                break;
+
+
+            case R.id.button34:
+                if (PLAYER_X) {
+                    button34.setText("X");
+                    playStatus[3][4] = 1;
+                } else {
+                    button34.setText("0");
+                    playStatus[3][4] = 0;
+                }
+                button34.setEnabled(false);
+                break;
+
+            case R.id.button40:
+                if (PLAYER_X) {
+                    button00.setText("X");
+                    playStatus[4][0] = 1;
+                } else {
+                    button40.setText("0");
+                    playStatus[4][0] = 0;
+                }
+                button40.setEnabled(false);
+                break;
+
+
+            case R.id.button41:
+                if (PLAYER_X) {
+                    button41.setText("X");
+                    playStatus[4][1] = 1;
+                } else {
+                    button41.setText("0");
+                    playStatus[4][1] = 0;
+                }
+                button41.setEnabled(false);
+                break;
+
+            case R.id.button42:
+                if (PLAYER_X) {
+                    button42.setText("X");
+                    playStatus[4][2] = 1;
+                } else {
+                    button42.setText("0");
+                    playStatus[4][2] = 0;
+                }
+                button42.setEnabled(false);
+                break;
+
+
+            case R.id.button43:
+                if (PLAYER_X) {
+                    button43.setText("X");
+                    playStatus[4][3] = 1;
+                } else {
+                    button43.setText("0");
+                    playStatus[4][3] = 0;
+                }
+                button43.setEnabled(false);
+                break;
+
+
+            case R.id.button44:
+                if (PLAYER_X) {
+                    button44.setText("X");
+                    playStatus[4][4] = 1;
+                } else {
+                    button44.setText("0");
+                    playStatus[4][4] = 0;
+                }
+                button44.setEnabled(false);
+                break;
+
+            case R.id.reset:
                 resetButtonPressed = true;
                 break;
-
             default:
                 break;
-
         }
-
-        if (resetButtonPressed) {
-            resetBoard();
-        } else {
-            TURN_COUNT++;
+        if(resetButtonPressed){
+            restartBoard();
+        }
+        else{
+            Turn_count++;
             PLAYER_X = !PLAYER_X;
 
-            if (PLAYER_X) {
-                setInfo("Player One turn");
-            } else {
-                setInfo("Player Two turn");
-            }
+            if(PLAYER_X){
+                setInfo("Player One Turn");
 
-            if (TURN_COUNT == 9) {
-                result("Game Draw");
+            }else {
+                setInfo("Player Two Turn");
             }
+        }
+        if (Turn_count == 25){
+            result("Game Draw");
+        }
+        checkWinner();
+    }
 
-            checkWinner();
+    /**
+     *  returns the status of the board and on this case
+     *                   sets the board to no player has played.
+     *                   Equivalent to starting a new game.
+     */
+    private void startGame() {
+        for (int i = 0; i < 5; i++) {
+            for (int j = 0; j < 5; j++) {
+                playStatus[i][j] = -1;
+            }
         }
     }
 
-    private void checkWinner() {
-
-        Log.d(TAG, "Inside checkWinner");
-
-        //Horizontal --- rows
-        for (int i = 0; i < 3; i++) {
-            if (boardStatus[i][0] == boardStatus[i][1] && boardStatus[i][0] == boardStatus[i][2]) {
-                if (boardStatus[i][0] == 1) {
-                    result("Player One Won\n" + (i + 1) + " row");
-                    break;
-                } else if (boardStatus[i][0] == 0) {
-                    result("Player Two Won\n" + (i + 1) + " row");
-                    break;
-                }
-            }
-        }
-
-        //Vertical --- columns
-        for (int i = 0; i < 3; i++) {
-            if (boardStatus[0][i] == boardStatus[1][i] && boardStatus[0][i] == boardStatus[2][i]) {
-                if (boardStatus[0][i] == 1) {
-                    result("Player One Won\n" + (i + 1) + " column");
-                    break;
-                } else if (boardStatus[0][i] == 0) {
-                    result("Player Two Won\n" + (i + 1) + " column");
-                    break;
-                }
-            }
-        }
-
-        //First diagonal
-        if (boardStatus[0][0] == boardStatus[1][1] && boardStatus[0][0] == boardStatus[2][2]) {
-            if (boardStatus[0][0] == 1) {
-                result("Player One Won\nFirst Diagonal");
-            } else if (boardStatus[0][0] == 0) {
-                result("Player Two WOn\nFirst Diagonal");
-            }
-        }
-
-        //Second diagonal
-        if (boardStatus[0][2] == boardStatus[1][1] && boardStatus[0][2] == boardStatus[2][0]) {
-            if (boardStatus[0][2] == 1) {
-                result("Player One Won\nSecond Diagonal");
-            } else if (boardStatus[0][2] == 0) {
-                result("Player Two Won\nSecond Diagonal");
-            }
-        }
-    }
+    /**
+     *
+     * @param value
+     * This method makes all the boxes in the matrix to be clickable
+     */
 
     private void enableAllBoxes(boolean value) {
-        Log.d(TAG, "Inside enableAllBoxes");
-        b00.setEnabled(value);
-        b01.setEnabled(value);
-        b02.setEnabled(value);
+        button00.setEnabled(value);
+        button01.setEnabled(value);
+        button02.setEnabled(value);
+        button03.setEnabled(value);
+        button04.setEnabled(value);
 
-        b10.setEnabled(value);
-        b11.setEnabled(value);
-        b12.setEnabled(value);
+        button10.setEnabled(value);
+        button11.setEnabled(value);
+        button12.setEnabled(value);
+        button13.setEnabled(value);
+        button14.setEnabled(value);
 
-        b20.setEnabled(value);
-        b21.setEnabled(value);
-        b22.setEnabled(value);
+        button20.setEnabled(value);
+        button21.setEnabled(value);
+        button22.setEnabled(value);
+        button23.setEnabled(value);
+        button24.setEnabled(value);
+
+        button30.setEnabled(value);
+        button31.setEnabled(value);
+        button32.setEnabled(value);
+        button33.setEnabled(value);
+        button34.setEnabled(value);
+
+        button40.setEnabled(value);
+        button41.setEnabled(value);
+        button42.setEnabled(value);
+        button43.setEnabled(value);
+        button44.setEnabled(value);
+
     }
 
-    private void result(String winner) {
-        Log.d(TAG, "Inside result");
+    /**
+     * This method clears the board of all the text and readys the board for a new game
+     * by enabling all the buttons.
+     * Methods called within this Method:
 
-        setInfo(winner);
-        enableAllBoxes(false);
-    }
+     */
+    private void restartBoard() {
+        button00.setText("");
+        button01.setText("");
+        button02.setText("");
+        button03.setText("");
+        button04.setText("");
 
-    private void resetBoard() {
-        Log.d(TAG, "Inside resetBoard");
-        b00.setText("");
-        b01.setText("");
-        b02.setText("");
+        button10.setText("");
+        button11.setText("");
+        button12.setText("");
+        button13.setText("");
+        button14.setText("");
 
-        b10.setText("");
-        b11.setText("");
-        b12.setText("");
+        button20.setText("");
+        button21.setText("");
+        button22.setText("");
+        button23.setText("");
+        button24.setText("");
 
-        b20.setText("");
-        b21.setText("");
-        b22.setText("");
+        button30.setText("");
+        button31.setText("");
+        button32.setText("");
+        button33.setText("");
+        button34.setText("");
+
+        button40.setText("");
+        button41.setText("");
+        button42.setText("");
+        button43.setText("");
+        button44.setText("");
 
         enableAllBoxes(true);
 
         PLAYER_X = true;
-        TURN_COUNT = 0;
+      Turn_count = 0;
 
-        initializeBoardStatus();
+        startGame();
 
         setInfo("New Game");
 
         Toast.makeText(this, "Board Reset", Toast.LENGTH_SHORT).show();
+
     }
 
-    private void setInfo(String text) {
-        tvInfo.setText(text);
+    /**
+     * This method passes the message to be displayed to the XML
+
+     */
+    private void setInfo(String text){statusInfo.setText(text);
+
     }
 
-    private void initializeBoardStatus() {
-        for (int i = 0; i < 3; i++) {
-            for (int j = 0; j < 3; j++) {
-                boardStatus[i][j] = -1;
+    private void checkWinner(){
+        //Horizontal rows
+        for (int i = 0; i < 5; i++){
+            if(playStatus[i][0] == playStatus[i][1] && playStatus[i][0]==playStatus[i][2]
+                    && playStatus[i][0]==playStatus[i][3]&& playStatus[i][0]== playStatus[i][4] ){
+                if(playStatus[i][0]== 1){
+                    result("Player one Won");
+                    break;
+                } else if (playStatus[i][0]== 0){
+
+                    result("Player Two Won");
+
+                }
+
             }
         }
 
+        //Vertical Columns
+
+        for(int i = 0; i<5; i++){
+            if(playStatus[0][i] == playStatus[1][i] && playStatus[0][i]==playStatus[2][i]
+                    && playStatus[0][i]==playStatus[3][i]&& playStatus[0][i]== playStatus[4][i] ){
+                if(playStatus[0][i]== 1){
+                    result("Player one Won");
+                    break;
+                } else if (playStatus[0][i]== 0){
+
+                    result("Player Two Won");
+
+                }
+
+            }
+        }
+
+        //First Diagonal
+        if(playStatus[0][0]== playStatus[1][1] && playStatus[0][0] == playStatus[2][2] && playStatus[0][0] == playStatus[3][3]
+                && playStatus[0][0] == playStatus[4][4]){
+            if(playStatus[0][0]== 1){
+                result("Player One Won");
+            }else if(playStatus[0][0] == 0){
+                result("Player Two Won");
+
+            }
+
+        }
+
+        if (playStatus[0][4]== playStatus[1][3] && playStatus[0][4] == playStatus[2][2] && playStatus[0][4] == playStatus[3][1]
+                && playStatus[0][4] == playStatus[4][0]){
+            if(playStatus[0][0]== 1){
+                result("Player One Won");
+            }else if(playStatus[0][0] == 0){
+                result("Player Two Won");
+
+            }
+        }
     }
 
+    /**
+     * This method checks the winner and displays them on the display text, it also resets the board for the next
+     * game in that set.
+
+     */
+    private void result(String winner) {
+        setInfo(winner);
+        enableAllBoxes(true);
+
+
+    }
 
 }
+
+

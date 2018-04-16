@@ -81,6 +81,7 @@ public class simplemode extends AppCompatActivity implements View.OnClickListene
 
     Button bReset;
 
+
     TextView tvInfo;
 
     int[][] boardStatus = new int[3][3];

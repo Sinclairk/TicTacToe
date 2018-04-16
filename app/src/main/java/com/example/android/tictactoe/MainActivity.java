@@ -51,6 +51,19 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(simpleIntent);
             }
         });
+        //Find the View that Has the Exit funtionality.
 
+        Button Exitbutton =  findViewById(R.id.exit);
+
+        //set a clicklistener on the view
+        Exitbutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+               //Exit the application on the press of the exit button
+                finish();
+                System.exit(0);
+
+            }
+        });
     }
 }
