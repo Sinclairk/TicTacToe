@@ -17,12 +17,12 @@ public class MainActivity extends AppCompatActivity {
         //Find the View that directs you to 5*5 grid
         Button ultra =  findViewById(R.id.ultra);
 
-        //set a clicklistener on the view
+        //set a click listener on the view
         ultra.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //Create a toast message "Good Luck"
-                Toast.makeText(v.getContext(), "Good Luck!!", Toast.LENGTH_LONG).show();
+                Toast.makeText(v.getContext(), "5 X 5", Toast.LENGTH_LONG).show();
 
                 //Create a new intent to open the {@link UltraMode}
 
@@ -36,12 +36,12 @@ public class MainActivity extends AppCompatActivity {
 
         Button simple =  findViewById(R.id.simple);
 
-        //set a clicklistener on the view
+        //set a click listener on the view
         simple.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //Create a toast message "Good Luck"
-                Toast.makeText(v.getContext(), "Simple Mode", Toast.LENGTH_LONG).show();
+                Toast.makeText(v.getContext(), "3 x 3", Toast.LENGTH_LONG).show();
 
                 //Create a new intent to open the {@link SimpleMode}
 
@@ -51,11 +51,11 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(simpleIntent);
             }
         });
-        //Find the View that Has the Exit funtionality.
+        //Find the View that Has the Exit functionality.
 
         Button Exitbutton =  findViewById(R.id.exit);
 
-        //set a clicklistener on the view
+        //set a click listener on the view
         Exitbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -10,13 +10,13 @@
         android:contentDescription="@string/app_name"
         android:src="@drawable/tictac" />
 
-    <!--Table Layout with 3 rows and each row with 3 button-->
+
     <TableLayout
         android:id="@+id/glGameBoard"
         style="@style/Table"
-        android:layout_below="@+id/tvInfo">
+        android:layout_below="@+id/Info">
 
-        <!--Row 1-->
+
         <TableRow>
 
             <Button
@@ -34,7 +34,7 @@
 
         </TableRow>
 
-        <!--Row 2-->
+
         <TableRow>
 
             <Button
@@ -51,7 +51,7 @@
 
         </TableRow>
 
-        <!--Row 3-->
+
         <TableRow>
 
             <Button
@@ -70,14 +70,14 @@
 
     </TableLayout>
 
-    <!--TextView to show user turns and winner-->
+
     <TextView
-        android:id="@+id/tvInfo"
+        android:id="@+id/Info"
         style="@style/TextViewStyle" />
 
-    <!--Button to reset game board-->
+
     <Button
-        android:id="@+id/bReset"
+        android:id="@+id/Reset"
         style="@style/ResetButtonStyle"
         android:layout_below="@+id/glGameBoard"
         android:text="@string/Reset" />
