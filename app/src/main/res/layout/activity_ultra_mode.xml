@@ -10,7 +10,7 @@
         android:contentDescription="@string/app_name"
         android:src="@drawable/tictac" />
 
-   
+
     <TableLayout
         android:id="@+id/glGameBoard"
         style="@style/TableLayoutUltra"

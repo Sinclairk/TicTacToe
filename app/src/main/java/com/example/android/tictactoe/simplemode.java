@@ -8,10 +8,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.lang.reflect.Method;
 
-import static com.example.android.tictactoe.R.id.ScoreP1;
-import static com.example.android.tictactoe.R.id.ScoreP2;
 import static com.example.android.tictactoe.R.id.b00;
 import static com.example.android.tictactoe.R.id.b01;
 import static com.example.android.tictactoe.R.id.b02;
@@ -30,31 +27,23 @@ https://medium.com/wiselteach/tic-tac-toe-tablelayout-android-app-androidmonk-a5
 public class simplemode extends AppCompatActivity implements View.OnClickListener {
 
     /**
-    DESCRIPTION OF VARIABLES
-
-    PLAYER_X ----> Variable to identify player turn
-    TURN_COUNT --> Variable to keep count of number of turns
-    button00 - button22 ---> Button for each 3x3 box
-    tvInfo ------> Information regarding game status
-    boardStatus -> 2-d array to identify board status
-        -1 means, No one has played on that box yet
-        0 means, Player 0 has played on that box
-        1 means, Player X has played on that box
-    */
-
-
-
-
-
-
-
+     * DESCRIPTION OF VARIABLES
+     * <p>
+     * PLAYER_X ----> Variable to identify player turn
+     * TURN_COUNT --> Variable to keep count of number of turns
+     * button00 - button22 ---> Button for each 3x3 box
+     * tvInfo ------> Information regarding game status
+     * boardStatus -> 2-d array to identify board status
+     * -1 means, No one has played on that box yet
+     * 0 means, Player 0 has played on that box
+     * 1 means, Player X has played on that box
+     */
 
 
     boolean PLAYER_X = true;
 
     int TURN_COUNT = 0;
-    int playerOneScore = 0;
-    int playerTwoScore = 0;
+    
     Button button00;
     Button button01;
     Button button02;
@@ -74,7 +63,7 @@ public class simplemode extends AppCompatActivity implements View.OnClickListene
 
     TextView statusInfo;
 
-    int[][]  boardStatus = new int[3][3];
+    int[][] boardStatus = new int[3][3];
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -96,8 +85,7 @@ public class simplemode extends AppCompatActivity implements View.OnClickListene
         Reset = findViewById(R.id.Reset);
 
         statusInfo = findViewById(R.id.Info);
-        scoreP1 = findViewById(ScoreP1);
-        scoreP2 = findViewById(ScoreP2);
+
 
         scoreP1.setOnClickListener(this);
         scoreP2.setOnClickListener(this);
@@ -121,10 +109,9 @@ public class simplemode extends AppCompatActivity implements View.OnClickListene
 
 
     /**
-     *  Called whenever any box or reset button is clicked.
-     This method places either X or 0 according to player turn
-     and updates other information
-     *
+     * Called whenever any box or reset button is clicked.
+     * This method places either X or 0 according to player turn
+     * and updates other information
      */
     @Override
     public void onClick(View view) {
@@ -269,14 +256,13 @@ public class simplemode extends AppCompatActivity implements View.OnClickListene
     private void checkWinner() {
 
 
-
         //Horizontal --- rows
         for (int i = 0; i < 3; i++) {
             if (boardStatus[i][0] == boardStatus[i][1] && boardStatus[i][0] == boardStatus[i][2]) {
                 if (boardStatus[i][0] == 1) {
-                    result("Player One Won" );
+                    result("Player One Won");
 
-                            break;
+                    break;
                 } else if (boardStatus[i][0] == 0) {
                     result("Player Two WOn");
 
@@ -342,7 +328,6 @@ public class simplemode extends AppCompatActivity implements View.OnClickListene
 
     /**
      * This method works whenever a player wins or game draws
-
      */
     private void result(String winner) {
 
@@ -353,7 +338,7 @@ public class simplemode extends AppCompatActivity implements View.OnClickListene
 
     /**
      * This method is called whenever reset button is pressed.
-     *  updates everything to initial values of game
+     * updates everything to initial values of game
      */
     private void resetBoard() {
 
@@ -385,11 +370,12 @@ public class simplemode extends AppCompatActivity implements View.OnClickListene
      * This method updates the string in TextView
      */
 
-        private void setInfo(String text) {
+    private void setInfo(String text) {
         statusInfo.setText(text);
     }
 
-    /** Method which set the value of integer array to -1
+    /**
+     * Method which set the value of integer array to -1
      */
     private void initializeBoardStatus() {
         for (int i = 0; i < 3; i++) {
