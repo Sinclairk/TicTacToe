@@ -2,12 +2,11 @@ package com.example.android.tictactoe;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
-
 
 import static com.example.android.tictactoe.R.id.b00;
 import static com.example.android.tictactoe.R.id.b01;
@@ -19,31 +18,29 @@ import static com.example.android.tictactoe.R.id.b20;
 import static com.example.android.tictactoe.R.id.b21;
 import static com.example.android.tictactoe.R.id.b22;
 
-/*
-Alot of the logic in this gama has been burrowed from rajat4914
-https://medium.com/wiselteach/tic-tac-toe-tablelayout-android-app-androidmonk-a56b9e1c6a15
- */
 
 public class simplemode extends AppCompatActivity implements View.OnClickListener {
 
     /**
-     * DESCRIPTION OF VARIABLES
-     * <p>
-     * PLAYER_X ----> Variable to identify player turn
-     * TURN_COUNT --> Variable to keep count of number of turns
-     * button00 - button22 ---> Button for each 3x3 box
-     * tvInfo ------> Information regarding game status
-     * boardStatus -> 2-d array to identify board status
-     * -1 means, No one has played on that box yet
-     * 0 means, Player 0 has played on that box
-     * 1 means, Player X has played on that box
-     */
+    DESCRIPTION OF VARIABLES
+
+    TAG ---------> Used for log debugging
+    PLAYER_X ----> Variable to identify player turn
+    TURN_COUNT --> Variable to keep count of number of turns
+    button00 - button22 ---> Button for each 3x3 box
+    tvInfo ------> Information regarding game status
+    boardStatus -> 2-d array to identify board status
+        -1 means, No one has played on that box yet
+        0 means, Player 0 has played on that box
+        1 means, Player X has played on that box
+    */
 
 
+    private final static String TAG = simplemode.class.getSimpleName();
     boolean PLAYER_X = true;
 
     int TURN_COUNT = 0;
-    
+
     Button button00;
     Button button01;
     Button button02;
@@ -56,14 +53,12 @@ public class simplemode extends AppCompatActivity implements View.OnClickListene
     Button button21;
     Button button22;
 
-    Button Reset;
+    Button bReset;
 
-    TextView scoreP1;
-    TextView scoreP2;
-
-    TextView statusInfo;
+    TextView tvInfo;
 
     int[][] boardStatus = new int[3][3];
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -82,14 +77,10 @@ public class simplemode extends AppCompatActivity implements View.OnClickListene
         button21 = findViewById(b21);
         button22 = findViewById(b22);
 
-        Reset = findViewById(R.id.Reset);
+        bReset = findViewById(R.id.bReset);
+        tvInfo = findViewById(R.id.tvInfo);
 
-        statusInfo = findViewById(R.id.Info);
-
-
-        scoreP1.setOnClickListener(this);
-        scoreP2.setOnClickListener(this);
-        Reset.setOnClickListener(this);
+        bReset.setOnClickListener(this);
 
         button00.setOnClickListener(this);
         button01.setOnClickListener(this);
@@ -115,7 +106,7 @@ public class simplemode extends AppCompatActivity implements View.OnClickListene
      */
     @Override
     public void onClick(View view) {
-
+        Log.d(TAG, "Inside onClick");
 
         boolean resetButtonPressed = false;
 
@@ -219,7 +210,7 @@ public class simplemode extends AppCompatActivity implements View.OnClickListene
                 button22.setEnabled(false);
                 break;
 
-            case R.id.Reset:
+            case R.id.bReset:
                 resetButtonPressed = true;
                 break;
 
@@ -253,19 +244,19 @@ public class simplemode extends AppCompatActivity implements View.OnClickListene
      * It checks for all the 3 rows, 3 columns and 2 diagonals
      */
 
+
     private void checkWinner() {
 
+        Log.d(TAG, "Inside checkWinner");
 
         //Horizontal --- rows
         for (int i = 0; i < 3; i++) {
             if (boardStatus[i][0] == boardStatus[i][1] && boardStatus[i][0] == boardStatus[i][2]) {
                 if (boardStatus[i][0] == 1) {
                     result("Player One Won");
-
                     break;
                 } else if (boardStatus[i][0] == 0) {
-                    result("Player Two WOn");
-
+                    result("Player Two WOn\n" + (i + 1) + " row");
                     break;
                 }
             }
@@ -276,11 +267,9 @@ public class simplemode extends AppCompatActivity implements View.OnClickListene
             if (boardStatus[0][i] == boardStatus[1][i] && boardStatus[0][i] == boardStatus[2][i]) {
                 if (boardStatus[0][i] == 1) {
                     result("Player One Won");
-
                     break;
                 } else if (boardStatus[0][i] == 0) {
                     result("Player Two Won");
-
                     break;
                 }
             }
@@ -290,10 +279,8 @@ public class simplemode extends AppCompatActivity implements View.OnClickListene
         if (boardStatus[0][0] == boardStatus[1][1] && boardStatus[0][0] == boardStatus[2][2]) {
             if (boardStatus[0][0] == 1) {
                 result("Player One Won");
-
             } else if (boardStatus[0][0] == 0) {
                 result("Player Two Won");
-
             }
         }
 
@@ -301,7 +288,6 @@ public class simplemode extends AppCompatActivity implements View.OnClickListene
         if (boardStatus[0][2] == boardStatus[1][1] && boardStatus[0][2] == boardStatus[2][0]) {
             if (boardStatus[0][2] == 1) {
                 result("Player One Won");
-
             } else if (boardStatus[0][2] == 0) {
                 result("Player Two Won");
             }
@@ -311,8 +297,9 @@ public class simplemode extends AppCompatActivity implements View.OnClickListene
     /**
      * This method can either enable or disable all boxes
      */
-    private void enableAllBoxes(boolean value) {
 
+    private void enableAllBoxes(boolean value) {
+        Log.d(TAG, "Inside enableAllBoxes");
         button00.setEnabled(value);
         button01.setEnabled(value);
         button02.setEnabled(value);
@@ -329,8 +316,9 @@ public class simplemode extends AppCompatActivity implements View.OnClickListene
     /**
      * This method works whenever a player wins or game draws
      */
-    private void result(String winner) {
 
+    private void result(String winner) {
+        Log.d(TAG, "Inside result");
 
         setInfo(winner);
         enableAllBoxes(false);
@@ -340,8 +328,9 @@ public class simplemode extends AppCompatActivity implements View.OnClickListene
      * This method is called whenever reset button is pressed.
      * updates everything to initial values of game
      */
-    private void resetBoard() {
 
+    private void resetBoard() {
+        Log.d(TAG, "Inside resetBoard");
         button00.setText("");
         button01.setText("");
         button02.setText("");
@@ -369,14 +358,16 @@ public class simplemode extends AppCompatActivity implements View.OnClickListene
     /**
      * This method updates the string in TextView
      */
-
     private void setInfo(String text) {
-        statusInfo.setText(text);
+        tvInfo.setText(text);
     }
+
 
     /**
      * Method which set the value of integer array to -1
      */
+
+
     private void initializeBoardStatus() {
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
