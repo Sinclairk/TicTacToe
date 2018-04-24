@@ -17,8 +17,15 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".UltraMode" />
-        <activity android:name=".simplemode"/>
+        <activity android:name=".UltraMode"
+            android:label="Ultra Mode"/>
+        <activity
+            android:name=".simplemode"
+            android:label="Simple Mode" />
+
+        <activity
+            android:name=".singlePlayer"
+            android:label="Single Player" />
     </application>
 
 </manifest>
